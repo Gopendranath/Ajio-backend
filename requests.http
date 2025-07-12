@@ -1,0 +1,118 @@
+@host = http://localhost:3000
+
+############ AUTH REQUESTS ############
+
+### Sign Up
+# @name signUp
+POST {{host}}/api/auth/signup
+Content-Type: application/json
+
+{
+    "name": "Baban",
+    "email": "baban567899@gmail.com",
+    "password": "1234"
+}
+
+### Sign In
+# @name signIn
+POST {{host}}/api/auth/signin
+Content-Type: application/json
+
+{
+    "email": "baban567899@gmail.com",
+    "password": "1234"
+}
+
+### Verify Auth (using token from signIn)
+# @name verify
+POST {{host}}/api/auth/verifyauth
+Content-Type: application/json
+Authorization: Bearer {{signIn.response.body.token}}
+
+{}
+
+
+############ PRODUCT REQUESTS ############
+
+### Get All Products
+# @name getProducts
+GET {{host}}/api/product/products
+
+
+### Get Single Product
+# @name getSingleProduct
+GET {{host}}/api/product/products/686e1aee385db3f901fb2d85
+Content-Type: application/json
+
+
+
+############ WISHLIST REQUESTS ############
+
+### Add to Wishlist (using token from signIn)
+# @name wishlistAdd
+POST {{host}}/api/wishlist/add
+Content-Type: application/json
+Authorization: Bearer {{signIn.response.body.token}}
+
+{
+    "productId": "3"
+}
+
+### Remove from Wishlist (using token from signIn)
+# @name wishlistRemove
+POST {{host}}/api/wishlist/remove
+Content-Type: application/json
+Authorization: Bearer {{signIn.response.body.token}}
+
+{
+    "productId": "1"
+}
+
+
+
+############ CART REQUESTS ############
+### Add to Cart (using token from signIn)
+# @name cartAdd
+POST {{host}}/api/cart/add
+Content-Type: application/json
+Authorization: Bearer {{signIn.response.body.token}}
+
+{
+    "productId": "686e1aff385db3f901fb2d8e",
+    "count": 2
+}
+
+### Clear from Cart (using token from signIn)
+# @name cartClear
+DELETE {{host}}/api/cart/clear
+Content-Type: application/json
+Authorization: Bearer {{signIn.response.body.token}}
+
+{}
+
+### Update Cart (using token from signIn)
+# @name cartUpdate
+PUT {{host}}/api/cart/update
+Content-Type: application/json
+Authorization: Bearer {{signIn.response.body.token}}
+
+{
+    "productId": "686e1aff385db3f901fb2d8e",
+    "count": 3
+}
+
+### Remove from Cart (using token from signIn)
+# @name cartRemove
+DELETE {{host}}/api/cart/remove
+Content-Type: application/json
+Authorization: Bearer {{signIn.response.body.token}}
+
+{
+    "productId": "686e1aff385db3f901fb2d8e"
+}
+
+### Get Cart (using token from signIn)
+# @name cartGet
+GET {{host}}/api/cart/get
+Content-Type: application/json
+Authorization: Bearer {{signIn.response.body.token}}
