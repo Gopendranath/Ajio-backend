@@ -33,7 +33,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-
+//comment
 app.use("/api/auth", authRoutes);
 app.use("/api/product", productRoutes);
 app.use("/admin", adminRoutes);

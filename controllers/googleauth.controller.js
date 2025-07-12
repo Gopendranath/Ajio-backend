@@ -6,7 +6,9 @@ dotenv.config();
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+const GOOGLE_CALLBACK_URL = process.env.GOOGLE_CALLBACK_URL;
 const FRONTEND_URL = process.env.FRONTEND_URL;
+
 
 export const googleOAuthCallback = async (req, res) => {
   const { code } = req.query;
@@ -17,7 +19,7 @@ export const googleOAuthCallback = async (req, res) => {
       code,
       client_id: GOOGLE_CLIENT_ID,
       client_secret: GOOGLE_CLIENT_SECRET,
-      redirect_uri: "http://localhost:3000/api/auth/google/callback",
+      redirect_uri: GOOGLE_CALLBACK_URL,
       grant_type: "authorization_code",
     });
 
