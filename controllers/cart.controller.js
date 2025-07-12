@@ -95,6 +95,7 @@ export const getCart = async (req, res) => {
         }
         res.status(200).json({ cart: user.cart });
     } catch (error) {
+        console.error("Error fetching cart:", error);
         res.status(500).json({ message: error.message });
     }
 };
@@ -102,7 +103,7 @@ export const getCart = async (req, res) => {
 export const syncCart = async (req, res) => {
     try {
         const { cart } = req.body;
-        console.log("Received cart for sync:", JSON.stringify(cart, null, 2));
+        // console.log("Received cart for sync:", JSON.stringify(cart, null, 2));
         if (!cart) {
             return res.status(400).json({ message: "Cart data is required" });
         }
@@ -113,10 +114,10 @@ export const syncCart = async (req, res) => {
 
         const newCartItems = [];
         for (const item of cart) {
-            console.log("Processing cart item:", JSON.stringify(item, null, 2));
+            // console.log("Processing cart item:", JSON.stringify(item, null, 2));
             const { productId, count } = item;
             if (!productId || !productId._id) {
-                console.error("Invalid cart item: productId or productId._id is missing", item);
+                // console.error("Invalid cart item: productId or productId._id is missing", item);
                 continue; // Skip invalid items
             }
             const product = await Product.findById(productId._id); // Assuming productId has _id

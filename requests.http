@@ -69,7 +69,6 @@ Authorization: Bearer {{signIn.response.body.token}}
 }
 
 
-
 ############ CART REQUESTS ############
 ### Add to Cart (using token from signIn)
 # @name cartAdd
@@ -78,7 +77,7 @@ Content-Type: application/json
 Authorization: Bearer {{signIn.response.body.token}}
 
 {
-    "productId": "686e1aff385db3f901fb2d8e",
+    "productId": "68720887c2e906dceb97c2f2",
     "count": 2
 }
 
