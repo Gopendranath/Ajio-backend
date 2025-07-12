@@ -41,7 +41,7 @@ GET {{host}}/api/product/products
 
 ### Get Single Product
 # @name getSingleProduct
-GET {{host}}/api/product/products/686e1aee385db3f901fb2d85
+GET {{host}}/api/product/products/dummy-1752303750888-0
 Content-Type: application/json
 
 
