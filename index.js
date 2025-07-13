@@ -18,6 +18,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
+connectToDb();
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(process.cwd(), 'views'));
 
@@ -33,7 +35,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-//comment
+
 app.use("/api/auth", authRoutes);
 app.use("/api/product", productRoutes);
 app.use("/admin", adminRoutes);
@@ -48,7 +50,6 @@ app.get('/', (req, res) => {
 
 
 app.listen(PORT, async () => {
-    await connectToDb();
     console.log(`Server is running on port ${PORT}`);
 });
 
