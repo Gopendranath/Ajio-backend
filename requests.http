@@ -65,7 +65,7 @@ Content-Type: application/json
 Authorization: Bearer {{signIn.response.body.token}}
 
 {
-    "productId": "1"
+    "productId": "3"
 }
 
 
